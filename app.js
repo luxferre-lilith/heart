@@ -1,7 +1,9 @@
-// 💌 PERSONALIZE THESE THREE LINES
-const boyfriendName = 'my love';
-const hiddenTitle = `For ${boyfriendName}`;
-const hiddenMessage = `I made this little secret page just for you. You are my favorite person, my safest place, and the sweetest part of my every day. I love you more than all of these tiny glowing messages could ever say.`;
+const boyfriendName = 'Joe';
+const hiddenTitle = `For my darling, ${boyfriendName}`;
+const hiddenMessage = `[SYSTEM STATUS]<br>
+Favorite human detected.<br>
+Heart stability restored.<br>
+Safe place located: your arms.`;
 
 const btn = document.getElementById('decryptBtn');
 const card = document.getElementById('card');
