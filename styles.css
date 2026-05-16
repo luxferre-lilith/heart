@@ -1,0 +1,70 @@
+:root {
+  --pink: #ff4d9c;
+  --deep-pink: #ff1f6d;
+  --bg: #050505;
+  --text: #fff;
+  --mono: 'Fira Code', monospace;
+  --sans: 'Inter', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255,77,156,.14), transparent 30%),
+    radial-gradient(circle at 50% 95%, rgba(255,77,156,.08), transparent 35%),
+    #050505;
+}
+
+.terminal-card {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  padding: 28px;
+  text-align: center;
+  z-index: 5;
+  transition: opacity 800ms ease, transform 800ms ease, filter 800ms ease;
+}
+.terminal-card.hide { opacity: 0; pointer-events: none; transform: scale(.98); filter: blur(10px); }
+.system, .package, .hint { font-family: var(--mono); margin: 0; }
+.system { color: #ff79b5; font-weight: 700; text-shadow: 0 0 12px rgba(255,77,156,.7); }
+.package { font-style: italic; font-weight: 700; }
+.hint { font-size: .78rem; opacity: .75; }
+.glow { font-size: clamp(3.2rem, 12vw, 8rem); line-height: .9; margin: 0; text-shadow: 0 0 16px rgba(255,255,255,.25); }
+.decrypt-button {
+  border: 2px solid rgba(255,255,255,.18);
+  background: linear-gradient(135deg, var(--deep-pink), var(--pink));
+  color: #fff;
+  padding: 16px 28px;
+  border-radius: 4px;
+  font: 900 .9rem var(--mono);
+  letter-spacing: .08em;
+  box-shadow: 0 0 28px rgba(255,77,156,.45), inset 0 0 0 1px rgba(255,255,255,.22);
+  cursor: pointer;
+  transform: translateZ(0);
+}
+.decrypt-button:hover { transform: translateY(-2px); }
+
+.heart-scene { position: fixed; inset: 0; opacity: 0; transition: opacity 900ms ease; }
+.heart-scene.show { opacity: 1; }
+#heartCanvas { width: 100%; height: 100%; display: block; }
+.center-message {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(3rem, 11vw, 8rem);
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+  text-shadow: 0 0 20px rgba(0,0,0,.3);
+  opacity: 0;
+  transform: scale(.9);
+  transition: opacity 900ms ease 1800ms, transform 900ms ease 1800ms;
+}
+.heart-scene.show .center-message { opacity: 1; transform: scale(1); }
