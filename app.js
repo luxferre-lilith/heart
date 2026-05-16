@@ -61,7 +61,7 @@ function makeParticles() {
     const targetY = cy + edge.y * scale * fill;
 
     particles.push({
-      text: Math.random() > .2 ? 'i love you' : boyfriendName,
+      text: Math.random() > .2 ? 'soulmate.exe' : boyfriendName,
       x: cx + (Math.random() - .5) * 80,
       y: innerHeight + 80 + Math.random() * 140,
       tx: targetX,
