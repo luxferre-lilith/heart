@@ -108,7 +108,7 @@ function animate() {
   ctx.shadowBlur = 16;
 
   for (const p of particles) {
-    const progress = Math.max(0, Math.min(1, (now - animationStart - p.delay) / 2800));
+    const progress = Math.max(0, Math.min(1, (now - animationStart - p.delay) / 4200));
     const e = easeOutCubic(progress);
     const x = p.x + (p.tx - p.x) * e + Math.sin((elapsed / 700) + p.delay) * (1 - e) * 18;
     const y = p.y + (p.ty - p.y) * e;
