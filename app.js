@@ -20,7 +20,7 @@ const noteBody = document.getElementById('noteBody');
 
 nameSlot.textContent = boyfriendName;
 noteTitle.textContent = hiddenTitle;
-noteBody.textContent = hiddenMessage;
+noteBody.innerHTML = hiddenMessage;
 
 let particles = [];
 let started = false;
