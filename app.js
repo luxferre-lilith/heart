@@ -1,9 +1,6 @@
 const boyfriendName = 'Joe';
 const hiddenTitle = `For my darling, ${boyfriendName}`;
-const hiddenMessage = `[SYSTEM STATUS]<br>
-Favorite human detected.<br>
-Heart stability restored.<br>
-Safe place located: your arms.`;
+const hiddenMessage = `Even in the dark, my heart lights up for you!`;
 
 const btn = document.getElementById('decryptBtn');
 const card = document.getElementById('card');
