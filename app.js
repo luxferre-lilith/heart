@@ -1,6 +1,6 @@
 const boyfriendName = 'Joe';
 const hiddenTitle = `For my darling, ${boyfriendName}`;
-const hiddenMessage = `Even in the dark, my heart lights up for you!`;
+const hiddenMessage = `You're the best!`;
 
 const btn = document.getElementById('decryptBtn');
 const card = document.getElementById('card');
