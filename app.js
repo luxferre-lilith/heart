@@ -62,8 +62,8 @@ function makeParticles() {
 
     particles.push({
       text: Math.random() > .2 ? 'soulmate.exe' : boyfriendName,
-      x: cx + (Math.random() - .5) * 80,
-      y: innerHeight + 80 + Math.random() * 140,
+      x: targetX + (Math.random() - .5) * 28,
+      y: targetY + 90 + Math.random() * 60,
       tx: targetX,
       ty: targetY,
       delay: Math.random() * 1800,
