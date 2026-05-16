@@ -3,25 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heart Landing</title>
+  <title>For My Love</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="noise"></div>
   <main class="terminal-card" id="card">
-    <p class="system">[system] Initializing heart.PROTOCOL_v2.0...</p>
-    <h1 class="glow">Love you.</h1>
-    <p class="package">&gt; One encrypted package found for you.</p>
+    <p class="system" id="typeLine"></p>
+    <p class="package">&gt; One encrypted package found for <span id="nameSlot">you</span>.</p>
     <button id="decryptBtn" class="decrypt-button" aria-label="Decrypt message">🔒 DECRYPT MESSAGE</button>
     <p class="hint">(or just click anywhere)</p>
   </main>
 
   <section id="heartScene" class="heart-scene" aria-label="I love you heart animation">
     <canvas id="heartCanvas"></canvas>
-    <div class="center-message">Love you.</div>
+    <button id="messageBtn" class="message-button hidden">OPEN HIDDEN MESSAGE</button>
   </section>
+
+  <dialog id="loveNote" class="love-note">
+    <button class="close" id="closeNote" aria-label="Close">×</button>
+    <p class="note-kicker">decrypted message</p>
+    <h1 id="noteTitle">For you</h1>
+    <p id="noteBody"></p>
+  </dialog>
 
   <script src="app.js"></script>
 </body>

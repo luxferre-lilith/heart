@@ -1,7 +1,10 @@
 :root {
   --pink: #ff4d9c;
-  --deep-pink: #ff1f6d;
-  --bg: #050505;
+  --hot: #ff1f6d;
+  --red: #ff385f;
+  --violet: #7c4dff;
+  --cyan: #7df9ff;
+  --bg: #040308;
   --text: #fff;
   --mono: 'Fira Code', monospace;
   --sans: 'Inter', system-ui, sans-serif;
@@ -13,10 +16,22 @@ body {
   font-family: var(--sans);
   color: var(--text);
   background:
-    radial-gradient(circle at 50% 48%, rgba(255,77,156,.14), transparent 30%),
-    radial-gradient(circle at 50% 95%, rgba(255,77,156,.08), transparent 35%),
-    #050505;
+    radial-gradient(circle at 50% 45%, rgba(255, 31, 109, .18), transparent 28%),
+    radial-gradient(circle at 15% 10%, rgba(125, 249, 255, .12), transparent 24%),
+    radial-gradient(circle at 88% 78%, rgba(124, 77, 255, .14), transparent 28%),
+    linear-gradient(180deg, #080610, #020104 70%);
 }
+
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  mix-blend-mode: screen;
+  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 4px);
+  animation: scan 4s linear infinite;
+}
+@keyframes scan { from { transform: translateY(-18px); } to { transform: translateY(18px); } }
 
 .terminal-card {
   position: fixed;
@@ -32,39 +47,70 @@ body {
 }
 .terminal-card.hide { opacity: 0; pointer-events: none; transform: scale(.98); filter: blur(10px); }
 .system, .package, .hint { font-family: var(--mono); margin: 0; }
-.system { color: #ff79b5; font-weight: 700; text-shadow: 0 0 12px rgba(255,77,156,.7); }
+.system {
+  min-height: 1.4em;
+  color: #ff9ac8;
+  font-weight: 700;
+  text-shadow: 0 0 14px rgba(255,77,156,.8), 0 0 30px rgba(125,249,255,.25);
+}
 .package { font-style: italic; font-weight: 700; }
 .hint { font-size: .78rem; opacity: .75; }
-.glow { font-size: clamp(3.2rem, 12vw, 8rem); line-height: .9; margin: 0; text-shadow: 0 0 16px rgba(255,255,255,.25); }
-.decrypt-button {
-  border: 2px solid rgba(255,255,255,.18);
-  background: linear-gradient(135deg, var(--deep-pink), var(--pink));
+
+.decrypt-button, .message-button {
+  border: 1px solid rgba(255,255,255,.22);
+  background: linear-gradient(135deg, var(--hot), var(--pink));
   color: #fff;
   padding: 16px 28px;
-  border-radius: 4px;
-  font: 900 .9rem var(--mono);
+  border-radius: 8px;
+  font: 900 .86rem var(--mono);
   letter-spacing: .08em;
-  box-shadow: 0 0 28px rgba(255,77,156,.45), inset 0 0 0 1px rgba(255,255,255,.22);
+  box-shadow: 0 0 28px rgba(255,77,156,.55), inset 0 0 0 1px rgba(255,255,255,.22);
   cursor: pointer;
   transform: translateZ(0);
 }
-.decrypt-button:hover { transform: translateY(-2px); }
+.decrypt-button:hover, .message-button:hover { transform: translateY(-2px); }
 
 .heart-scene { position: fixed; inset: 0; opacity: 0; transition: opacity 900ms ease; }
 .heart-scene.show { opacity: 1; }
 #heartCanvas { width: 100%; height: 100%; display: block; }
-.center-message {
+
+.message-button {
   position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: clamp(3rem, 11vw, 8rem);
-  font-weight: 700;
-  text-align: center;
-  pointer-events: none;
-  text-shadow: 0 0 20px rgba(0,0,0,.3);
-  opacity: 0;
-  transform: scale(.9);
-  transition: opacity 900ms ease 1800ms, transform 900ms ease 1800ms;
+  left: 50%;
+  bottom: 9vh;
+  translate: -50% 0;
+  z-index: 4;
+  opacity: 1;
+  transition: opacity 500ms ease, transform 500ms ease;
 }
-.heart-scene.show .center-message { opacity: 1; transform: scale(1); }
+.message-button.hidden { opacity: 0; pointer-events: none; transform: translateY(15px); }
+
+.love-note {
+  width: min(92vw, 560px);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 22px;
+  color: white;
+  background: rgba(7, 4, 12, .82);
+  backdrop-filter: blur(22px);
+  box-shadow: 0 0 60px rgba(255,77,156,.35), 0 0 90px rgba(125,249,255,.10);
+  padding: 34px;
+  text-align: center;
+}
+.love-note::backdrop { background: rgba(0,0,0,.45); }
+.close {
+  float: right;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+.note-kicker {
+  margin: 0 0 10px;
+  font: 700 .78rem var(--mono);
+  letter-spacing: .18em;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+.love-note h1 { margin: 0 0 16px; font-size: clamp(2rem, 7vw, 4rem); }
+.love-note p:last-child { font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; }
